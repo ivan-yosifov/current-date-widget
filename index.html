@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Calendar Widget</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@700;900&display=swap" rel="stylesheet"> 
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		body{
+			background: #80cbc4;
+			font-family: 'Be Vietnam Pro', sans-serif;
+		}
+		.container{
+			width: 600px;
+			height: 600px;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			margin: auto;
+		}
+		.calendar{
+			width: 260px;
+			height: 290px;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			margin: auto;
+		}
+		.hinges{
+			width: 22px;
+			height: 22px;
+			background: #d33920;
+			border-radius: 50%;
+			position: absolute;
+			top: 50px;
+			left: 30px;
+			z-index: 1;
+			box-shadow: 178px 0 0 #d33920;
+		}
+		.hinges:before{
+			content: '';
+			width: 14px;
+			height: 60px;
+			background: #17202a;
+			border-radius: 20px;
+			position: absolute;
+			top: -42px;
+			left: 4px;
+			box-shadow: 178px 0 0 #17202a;
+		}
+		.hinges:after{
+			content: '';
+			width: 4px;
+			height: 28px;
+			background: #30424e;
+			border-radius: 4px;
+			position: absolute;
+			top: -36px;
+			left: 7px;
+			box-shadow: 178px 0 0 #30424e;
+		}
+		.calendar-body{
+			width: 260px;
+			height: 260px;
+			border-radius: 30px;
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			margin: auto;
+			overflow: hidden;		
+		}
+		.calendar-body:after{
+			content: '';
+			width: 99px;
+			height: 70px;
+			background: #ff5f3d;
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			transform-origin: top right;
+			transform: rotate(-45deg);
+			box-shadow: inset 0 1px 4px rgba(0,0,0,.5);
+		}
+		.month{
+			width: 100%;
+			height: 70px;
+			background: #ff5f3d;
+			color: #fff;
+			font-size: 40px;
+			font-weight: 700;
+			text-transform: uppercase;
+			text-align: center;
+			line-height: 70px;
+		}
+		.day{
+			width: 100%;
+			height: 190px;
+			background: #fefdf8;
+			font-size: 100px;
+			font-weight: 900;
+			text-align: center;
+			line-height: 180px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="calendar">
+			<div class="hinges"></div>
+			<div class="calendar-body">
+				<div class="month" id="month">jan</div>
+				<div class="day" id="day">25</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		const monthEl = document.getElementById('month');
+		const dayEl = document.getElementById('day');
+		const currentDate = new Date();
+
+		const MONTHS = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+		const currentMonth = MONTHS[currentDate.getMonth()-1]
+		const currentDay = currentDate.getDate();
+		if(currentDay < 10){
+			currentDay = '0' + currentDay;
+		}
+
+		monthEl.textContent = currentMonth;
+		dayEl.textContent = currentDay;
+	</script>
+</body>
+</html>
